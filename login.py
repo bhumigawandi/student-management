@@ -3,7 +3,7 @@ from PIL import ImageTk, Image
 import smtplib
 import random
 from email.mime.text import MIMEText
-
+#lnln
 
 def forget():
     
