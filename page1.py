@@ -6,6 +6,7 @@ from email.mime.text import MIMEText
 
 
 def forget():
+    #Git Demo
     root = Tk()
     root.title("Forget Password")
     frame = Frame(root, width=350, height=150)
@@ -69,7 +70,7 @@ def email():
 
     send_button = Button(root, text="Send OTP", command=send_otp)
     send_button.pack()
-    otp_entry = Entry(root, show="*")  # Hide entered characters
+    otp_entry = Entry(root, show="*")  
     otp_entry.pack()
 
     verify_button = Button(root, text="Verify OTP", command=verify_otp, state='disabled')
