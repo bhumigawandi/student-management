@@ -6,7 +6,7 @@ from email.mime.text import MIMEText
 
 
 def forget():
-    #Git Demo
+    
     root = Tk()
     root.title("Forget Password")
     frame = Frame(root, width=350, height=150)
