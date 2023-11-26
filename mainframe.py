@@ -1,5 +1,6 @@
 import tkinter as tk
 from PIL import ImageTk, Image
+import loginpage
 
 class Mainframe:
     def __init__(self,root):
@@ -7,14 +8,14 @@ class Mainframe:
         root.title('student and course managment ')
         self.frame1=tk.Frame(root,width=1920,height=1080,bg='light blue')
         self.frame1.pack()
-        self.img = ImageTk.PhotoImage(Image.open("img.png"))
-
-        self.img1 = ImageTk.PhotoImage(Image.open("img1.png"))
-
-        self.label = tk.Label(self.frame1, image=self.img)
-        self.label.place(x=10, y=25)
-        self.l1 = tk.Label(self.frame1, image=self.img1)
-        self.l1.place(x=300, y=150)
+        # self.img = ImageTk.PhotoImage(Image.open("img.png"))
+        #
+        # self.img1 = ImageTk.PhotoImage(Image.open("img1.png"))
+        #
+        # self.label = tk.Label(self.frame1, image=self.img)
+        # self.label.place(x=10, y=25)
+        # self.l1 = tk.Label(self.frame1, image=self.img1)
+        # self.l1.place(x=300, y=150)
         self.b1 = tk.Button(self.frame1, text="Student", bg='yellow', fg='black', font=("Arial", 17), activeforeground="white",
                     activebackground="red")
         self.b1.place(x=950, y=300)
