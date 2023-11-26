@@ -1,8 +1,20 @@
 import tkinter as tk
 from tkinter import messagebox
-class login:
-    def __init__(self,root):
+import mainframe as m
+
+
+def login_app(root_parent):
+    root = tk.Tk()
+    main_obj = root_parent
+    root_parent.exit()
+    login_obj = Login(root, main_obj)
+    return login_obj
+
+
+class Login:
+    def __init__(self, root, main_obj):
         self.root = root
+        self.parent = main_obj
         root.title("Login")
         self.f = tk.Frame(root, width=1500, height=1500, bg="light blue")
         self.f.propagate(0)
@@ -29,22 +41,28 @@ class login:
         self.b.place(x=300, y=300)
 
         self.b2 = tk.Button(self.f, text="forget password", font=("Arial", 10, 'bold'), fg="blue", bg="pink", border=5,
-                    activebackground='red')
+                            activebackground='red')
+
+        self.b3 = tk.Button(self.f, text="X BACK", bg="red", fg="black", font=("Arial", 17),
+                            activeforeground="white",
+                            activebackground="red", command=self.exit)
+        self.b3.pack()
         self.b2.place(x=460, y=260)
+        self.root.attributes('-fullscreen', True)
+        self.root.mainloop()
+
+    def exit(self):
+        self.root.destroy()
+        m.main()
+
+
     # def login(self):
-        # username = self.username_entry.get()
-        # password = self.password_entry.get()
-        #
-        # # Add your authentication logic here
-        # # For simplicity, let's use a basic check
-        # if username == "admin" and password == "password":
-        #     messagebox.showinfo("Login Successful", "Welcome, {}".format(username))
-        # else:
-        #     messagebox.showerror("Login Failed", "Invalid username or password")
-
-
-
-if __name__ == "__main__":
-    root = tk.Tk()
-    login_page = login(root)
-    root.mainloop()
+    #     username = self.username_entry.get()
+    #     password = self.password_entry.get()
+    #
+    #     # Add your authentication logic here
+    #     # For simplicity, let's use a basic check
+    #     if username == "admin" and password == "password":
+    #         messagebox.showinfo("Login Successful", "Welcome, {}".format(username))
+    #     else:
+    #         messagebox.showerror("Login Failed", "Invalid username or password")
