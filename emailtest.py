@@ -1,70 +1,89 @@
+
 import tkinter as tk
 from tkinter import messagebox
 import smtplib
-from email.message import EmailMessage
-from random import randint
+import random
 
-class signUpApp:
-    def _init_(self, root):
-        self.root = root
-        self.root.title("Sign Up with Gmail OTP Verification")
-
-        self.email_label = tk.Label(root, text="Email:")
-        self.email_entry = tk.Entry(root)
-        self.email_label.grid(row=0, column=0, sticky="e")
-        self.email_entry.grid(row=0, column=1, columnspan=2, sticky="we")
-
-        self.send_otp_button = tk.Button(root, text="Send OTP", command=self.send_otp)
-        self.send_otp_button.grid(row=1, column=0, columnspan=3, pady=10)
-
-        self.otp_label = tk.Label(root, text="OTP:")
-        self.otp_entry = tk.Entry(root)
-        self.otp_label.grid(row=2, column=0, sticky="e")
-        self.otp_entry.grid(row=2, column=1, columnspan=2, sticky="we")
-
-        self.verify_otp_button = tk.Button(root, text="Verify OTP", command=self.verify_otp)
-        self.verify_otp_button.grid(row=3, column=0, columnspan=3, pady=10)
-
-        self.otp_code = None
+class OTPSender:
+    def __init__(self, smtp_server, smtp_port, sender_email, sender_password):
+        self.smtp_server = smtp_server
+        self.smtp_port = smtp_port
+        self.sender_email = sender_email
+        self.sender_password = sender_password
 
     def generate_otp(self):
-        # Generate a random 6-digit OTP
-        return str(randint(100000, 999999))
+        return str(random.randint(100000, 999999))
 
-    def send_otp(self):
+    def send_otp(self, email, otp):
+        try:
+            # Create an SMTP connection
+            server = smtplib.SMTP(self.smtp_server, self.smtp_port)
+            server.starttls()
+
+            # Log in to your email account
+            server.login(self.sender_email, self.sender_password)
+
+            # Compose the email
+            subject = 'Your OTP'
+            body = f'Your OTP is: {otp}'
+            message = f'Subject: {subject}\n\n{body}'
+
+            # Send the email
+            server.sendmail(self.sender_email, email, message)
+
+            # Close the SMTP connection
+            server.quit()
+
+            messagebox.showinfo('Success', 'OTP sent successfully!')
+        except Exception as e:
+            messagebox.showerror('Error', f'Failed to send OTP: {str(e)}')
+
+class OTPApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title('OTP Sender')
+
+        self.otp_sender = OTPSender('smtp.gmail.com', 587, 'ruparelmanagement@gmail.com', 'uewv oitf hbpn diyb')
+
+        self.create_widgets()
+
+    def create_widgets(self):
+        self.label = tk.Label(self.root, text='Enter your email:', font=("Arial", 17),fg="maroon",bg="light blue")
+        self.label.pack(pady=10)
+
+        self.email_entry = tk.Entry(self.root,bd=5, font=("Arial", 10))
+        self.email_entry.pack(pady=10)
+
+        self.send_button = tk.Button(self.root, text='Send OTP', command=self.send_otp_button_click,fg="maroon",bg="yellow",activebackground="green")
+        self.send_button.pack(pady=10)
+
+        self.otp_label = tk.Label(self.root, text='Enter OTP:', font=("Arial", 17),fg="maroon",bg="light blue")
+        self.otp_label.pack(pady=10)
+
+        self.otp_entry = tk.Entry(self.root, show='*',bd=5,fg="maroon", font=("Arial", 10))
+        self.otp_entry.pack(pady=10)
+
+        self.verify_button = tk.Button(self.root, text='Verify OTP', command=self.verify_otp_button_click,fg="maroon",bg="yellow",activebackground="green")
+        self.verify_button.pack(pady=10)
+
+    def send_otp_button_click(self):
         email = self.email_entry.get()
         if email:
-            # Generate OTP
-            self.otp_code = self.generate_otp()
-
-            # Send OTP via email (replace this with actual email sending code)
-            try:
-                msg = EmailMessage()
-                msg.set_content(f"Your OTP is: {self.otp_code}")
-                msg["Subject"] = "OTP Verification"
-                msg["From"] = ""  # Replace with your Gmail address
-                msg["To"] = email
-
-                with smtplib.SMTP("smtp.gmail.com", 587) as server:
-                    server.starttls()
-                    server.login("emailid", "password")  # Replace with your Gmail credentials
-                    server.send_message(msg)
-
-                messagebox.showinfo("Success", "OTP sent successfully.")
-            except Exception as e:
-                messagebox.showerror("Error", f"Error sending OTP: {e}")
+            self.generated_otp = self.otp_sender.generate_otp()
+            self.otp_sender.send_otp(email, self.generated_otp)
+            self.label.config(text='Enter your email (OTP sent)')
         else:
-            messagebox.showerror("Error", "Please enter your email address.")
+            messagebox.showwarning('Warning', 'Please enter your email address.')
 
-    def verify_otp(self):
+    def verify_otp_button_click(self):
         entered_otp = self.otp_entry.get()
-        if entered_otp == self.otp_code:
-            messagebox.showinfo("Success", "OTP verification successful.")
+        if entered_otp == self.generated_otp:
+            messagebox.showinfo('Success', 'OTP Verified!')
         else:
-            messagebox.showerror("Error", "Invalid OTP.")
-
+            messagebox.showerror('Error', 'Invalid OTP. Please try again.')
 
 if __name__ == "__main__":
     root = tk.Tk()
-    app = signUpApp(root)
+    app = OTPApp(root)
     root.mainloop()
+
