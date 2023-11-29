@@ -1,6 +1,10 @@
 import tkinter as tk
 from tkinter import messagebox
 import mainframe as m
+import emailtest as Email
+
+
+
 
 
 def login_app(root_parent):
@@ -9,6 +13,9 @@ def login_app(root_parent):
     root_parent.exit()
     login_obj = Login(root, main_obj)
     return login_obj
+
+
+
 
 
 class Login:
@@ -41,7 +48,7 @@ class Login:
         self.b.place(x=300, y=300)
 
         self.b2 = tk.Button(self.f, text="forget password", font=("Arial", 10, 'bold'), fg="blue", bg="pink", border=5,
-                            activebackground='red')
+                            activebackground='red',command=lambda:Email.email(self))
 
         self.b3 = tk.Button(self.f, text="X BACK", bg="red", fg="black", font=("Arial", 17),
                             activeforeground="white",

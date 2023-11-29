@@ -21,23 +21,24 @@ class Mainframe:
 
         self.label = tk.Label(self.frame1, image=self.img)
         self.label.place(x=10, y=25)
+
         self.l1 = tk.Label(self.frame1, image=self.img1)
-        self.l1.place(x=300, y=150)
+        self.l1.place(x=400, y=200)
         self.b1 = tk.Button(self.frame1, text="Student", bg='yellow', fg='black', font=("Arial", 17),
                             activeforeground="white",
                             activebackground="red", command=lambda: login.login_app(self))
-        self.b1.place(x=950, y=300)
-        self.b2 = tk.Button(self.frame1, text="Faculty", bg="yellow", fg="black", font=("Arial", 17),
-                            activeforeground="white",
-                            activebackground="red")
-        self.b2.place(x=950, y=350)
+        self.b1.place(x=500, y=650)
+        self.b2 = tk.Button(self.frame1, text="Faculty", bg="yellow", fg="black", font=("Arial", 17),activeforeground="white",activebackground="red",command=lambda: login.login_app(self))
+        self.b2.place(x=400, y=650)
         self.b3 = tk.Button(self.frame1, text="X Exit", bg="red", fg="black", font=("Arial", 17),
                             activeforeground="white",
                             activebackground="red", command=self.exit)
         self.b3.place(x=800, y=650)
-        self.m = tk.Label(self.frame1, text="STUDENT & COURSE\n MANAGEMENT SYSTEM", bg="white", fg="purple",
-                          font=('bold 30 underline'))
-        self.m.place(x=450, y=15)
+        self.b4=tk.Button(self.frame1,text="Admin",bg="yellow",fg="black",font=("Arial",17),activeforeground="white",
+                          activebackground="red")
+        self.b4.place(x=600,y=650)
+        self.m = tk.Label(self.frame1, text="D.G Ruparel College of Arts,\n Science and Commerce", bg="white", fg="purple",font=('bold 30 underline'))
+        self.m.place(x=400, y=15)
 
         #self.root.geometry("1000x1000")
         self.root.attributes('-fullscreen', True)
