@@ -4,7 +4,7 @@ import random
 from email.mime.text import MIMEText
 from tkinter import Tk, Label, Entry, Button
 
-
+#ffnfnf
 def email(root_parent1):
     root = tk.Tk
     main_Obj = root_parent1
