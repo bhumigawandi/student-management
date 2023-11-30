@@ -27,7 +27,7 @@ class Detail:
         self.S1=Scrollbar(self.Infoframe,orient=HORIZONTAL,width=20)
         self.S1.pack(side=BOTTOM,fill=X)
 
-        S2=Scrollbar(self.Infoframe,orient=VERTICAL,width=20)
+        self.S2=Scrollbar(self.Infoframe,orient=VERTICAL,width=20)
         self.S2.pack(side=RIGHT,fill=Y)
 
         self.L1=Label(self.viewframe,text="Search By :" ,bg="black",fg="white",font=(20))
