@@ -104,7 +104,7 @@ class info:
         self.updateimage = ImageTk.PhotoImage(self.image1)
 
         self.sav = Image.open("save2.jpg")
-        self.sav = sav.resize((150, 71))
+        self.sav = self.sav.resize((150, 71))
         self.savimg = ImageTk.PhotoImage(self.sav)
 
         self.savbtn = Button(self.leftframe, bg="white", bd=0, image=self.savimg, cursor="hand2")

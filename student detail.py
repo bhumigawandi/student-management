@@ -46,7 +46,3 @@ class Detail:
         self.B2.place(x=650)
 
 
-if __name__ == "__main__":
-    root = tk.Tk()
-    login_page = Detail(root)
-    root.mainloop()

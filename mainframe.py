@@ -9,7 +9,7 @@ def main():
 
 
 class Mainframe:
-    def _init_(self, root):
+    def __init__(self, root):
         self.root = root
         self.root.title('Student And Course Managment ')
         self.frame1 = tk.Frame(self.root, width=1920, height=1080, bg='light blue')
