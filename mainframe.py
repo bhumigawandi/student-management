@@ -1,7 +1,7 @@
 import tkinter as tk
 from PIL import ImageTk, Image
 import loginpage as login
-#hello this is main frame 
+#hello this is main frame
 def main():
     root = tk.Tk()
     app = Mainframe(root)
