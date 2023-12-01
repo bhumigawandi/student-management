@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 import mainframe as m
-import emailtest as Email
+import email_code as Email
 import student_detail as Detail
 import student_info as Info
 
