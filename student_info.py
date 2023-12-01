@@ -18,6 +18,7 @@ class info:
 
 
 
+
         self.leftframe = tk.LabelFrame(self.root, bd=8, bg="white", text="Student Information",font=("Arial", 17))
         self.leftframe.place(x=25, y=10, width=1200, height=1500)
 
@@ -142,5 +143,6 @@ class info:
 
         self.rsetbtn = tk.Button(self.leftframe, bg="white", bd=0, image=self.resetimg, cursor="hand2")
         self.rsetbtn.place(x=900, y=380, width=140, height=45)
+        self.leftframe.mainloop()
 
 

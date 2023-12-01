@@ -46,6 +46,7 @@ class Login:
                 Info.std_info()
 
 
+
         self.root = root
         self.parent = main_obj
         root.title("Login")
@@ -79,7 +80,7 @@ class Login:
         self.b3 = tk.Button(self.f, text="X BACK", bg="red", fg="black", font=("Arial", 17),
                             activeforeground="white",
                             activebackground="red", command=self.exit)
-        self.b3.pack()
+        self.b3.place(x=400,y=400)
         self.b2.place(x=460, y=260)
         self.root.attributes('-fullscreen', True)
         self.root.mainloop()
