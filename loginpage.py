@@ -2,9 +2,8 @@ import tkinter as tk
 from tkinter import messagebox
 import mainframe as m
 import emailtest as Email
-
-
-#jjjjcc
+import student_detail as Detail
+import student_info as Info
 
 
 def login_app(root_parent):
@@ -15,35 +14,36 @@ def login_app(root_parent):
     return login_obj
 
 
-
-
-
 class Login:
     def __init__(self, root, main_obj):
 
+        self.flag = None
+
         def check_fun():
+            self.flag = 0
             self.l = []
-            self.e=self.e2.get()
+            self.e = self.e2.get()
             for self.i in self.e:
-
                 self.l.append(self.i)
-            self.a = ['@','g','m','a','i','l','.','c','o','m']
-            self.b = self.l[-10:]#email
-
+            self.a = ['@', 'g', 'm', 'a', 'i', 'l', '.', 'c', 'o', 'm']
+            self.b = self.l[-10:]  # email
 
             self.l = ""
-            self.p = self.e3.get()#username
+            self.p = self.e3.get()  # username
 
             self.p1 = self.e1.get()
-            if self.p == self.l or self.p1==self.l or self.a == self.l:
+            if self.p == self.l or self.p1 == self.l or self.a == self.l:
                 messagebox.askokcancel("Input", "Invalid Input")
-            elif self.a !=self.b:
-                messagebox.askokcancel('email','invaild email id')
+            elif self.a != self.b:
+                messagebox.askokcancel('email', 'invaild email id')
             else:
-                messagebox.askokcancel('Input','login successfully')
+                self.flag = 1
+                messagebox.askokcancel('Input', 'login successfully')
 
-
-
+        def combo():
+            check_fun()
+            if self.flag == 1:
+                Info.std_info()
 
 
         self.root = root
@@ -70,11 +70,11 @@ class Login:
         self.e2.place(x=200, y=150)
         self.l3.place(x=20, y=200)
         self.e3.place(x=200, y=200)
-        self.b = tk.Button(self.f, text="Login", bg='red', border=5,command=check_fun)
+        self.b = tk.Button(self.f, text="Login", bg='red', border=5, command=combo)
         self.b.place(x=300, y=300)
 
         self.b2 = tk.Button(self.f, text="forget password", font=("Arial", 10, 'bold'), fg="blue", bg="pink", border=5,
-                            activebackground='red',command=lambda:Email.email(self))
+                            activebackground='red', command=lambda: Email.email(self))
 
         self.b3 = tk.Button(self.f, text="X BACK", bg="red", fg="black", font=("Arial", 17),
                             activeforeground="white",
@@ -87,15 +87,3 @@ class Login:
     def exit(self):
         self.root.destroy()
         m.main()
-
-
-    # def login(self):
-    #     username = self.username_entry.get()
-    #     password = self.password_entry.get()
-    #
-    #     # Add your authentication logic here
-    #     # For simplicity, let's use a basic check
-    #     if username == "admin" and password == "password":
-    #         messagebox.showinfo("Login Successful", "Welcome, {}".format(username))
-    #     else:
-    #         messagebox.showerror("Login Failed", "Invalid username or password")

@@ -1,13 +1,21 @@
 from tkinter import *
+import tkinter as tk
 from tkcalendar import DateEntry
 from tkinter import ttk
 from PIL import ImageTk, Image
-import tkinter as tk
+
+
+
+def std_info():
+    root = tk.Tk()
+    app1 = info(root)
+    return app1
 
 
 class info:
     def __init__(self,root):
         self.root = root
+
 
 
         self.leftframe = tk.LabelFrame(self.root, bd=8, bg="white", text="Student Information",font=("Arial", 17))
@@ -98,9 +106,9 @@ class info:
         self.l15.place(x=350, y=50)
         self.e15.place(x=435, y=50)
 
-        img = ImageTk.PhotoImage(Image.open("studentimg1.jpg"))
+        self.img = ImageTk.PhotoImage(Image.open("studentimg1.jpg"))
 
-        self.label = Label(self.leftframe, image=img)
+        self.label = tk.Label(self.leftframe, image=self.img)
         self.label.pack()
 
         self.image = Image.open("studentimg1.jpg")
@@ -114,7 +122,7 @@ class info:
         self.savbtn = tk.Button(self.leftframe, bg="white", bd=0, image=self.savimg, cursor="hand2")
         self.savbtn.place(x=900, y=180, width=150, height=100)
 
-        self.update = Image.open("update1.jpg")
+        self.update = Image.open("update.png")
         self.update = self.update.resize((150, 50))
         self.updateimg = ImageTk.PhotoImage(self.update)
 

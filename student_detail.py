@@ -1,6 +1,9 @@
 from tkinter import *
 from tkinter import ttk
 from PIL import ImageTk, Image
+import tkinter as tk
+
+
 class Detail:
     def __init__(self,root):
         self.root=root
