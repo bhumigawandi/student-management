@@ -5,7 +5,7 @@ import emailtest as Email
 import student_detail as Detail
 import student_info as Info
 
-
+#loginpg
 def login_app(root_parent):
     root = tk.Tk()
     main_obj = root_parent
