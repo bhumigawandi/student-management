@@ -2,12 +2,40 @@ from tkinter import *
 from tkinter import ttk
 from PIL import ImageTk, Image
 import tkinter as tk
+from tkinter import messagebox
+
 
 
 class Detail:
     def __init__(self,root):
+        # def on_exit():
+        #     result = messagebox.askyesno("Exit Confirmation", "Are you sure you want to exit?")
+        #
+        #     if result:
+        #         root.protocol("WM_DELETE_WINDOW", on_exit)
+        #
+        #         self.root.destroy()
+        def on_exit():
+            result = messagebox.askyesno("Exit Confirmation", "Are you sure you want to exit?")
+            if result:
+                self.root.destroy()
+
+            # Create the main Tkinter window
+            root = tk.Tk()
+            root.title("Exit Message Box Example")
+
+            # Bind the on_exit function to the close button of the window
+            root.protocol("WM_DELETE_WINDOW", on_exit)
+
+            # Create some widgets or components for your application
+            label = tk.Label(root, text="Hello, Tkinter!")
+            label.pack(pady=10)
+
+
+
         self.root=root
         self.MainFrame= LabelFrame(self.root, bd=5, bg="white",  text="Student Information",)
+
         self.MainFrame.place(x=25, y=10, width=1200, height=1500)
         self.img = ImageTk.PhotoImage(Image.open("studentimg1.jpg"))
 
