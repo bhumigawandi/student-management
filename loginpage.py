@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 import mainframe as m
 import emailtest as Email
-
+from tkinter import messagebox
 
 #jjjjcc
 
@@ -14,12 +14,14 @@ def login_app(root_parent):
     login_obj = Login(root, main_obj)
     return login_obj
 
-
-
-
-
 class Login:
     def __init__(self, root, main_obj):
+        def password():
+            self.l=""
+            self.p=self.e3.get()
+            if self.p==self.l:
+                messagebox.askokcancel("Password","Password incorrect")
+
         self.root = root
         self.parent = main_obj
         root.title("Login")
@@ -44,7 +46,7 @@ class Login:
         self.e2.place(x=200, y=150)
         self.l3.place(x=20, y=200)
         self.e3.place(x=200, y=200)
-        self.b = tk.Button(self.f, text="Login", bg='red', border=5)
+        self.b = tk.Button(self.f, text="Login", bg='red', border=5,command=password)
         self.b.place(x=300, y=300)
 
         self.b2 = tk.Button(self.f, text="forget password", font=("Arial", 10, 'bold'), fg="blue", bg="pink", border=5,
