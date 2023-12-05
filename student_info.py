@@ -3,6 +3,7 @@ import tkinter as tk
 from tkcalendar import DateEntry
 from tkinter import ttk
 from PIL import ImageTk, Image
+from tkinter import messagebox
 
 
 
@@ -15,6 +16,67 @@ def std_info():
 class info:
     def __init__(self,root):
         self.root = root
+        def get_fun():
+            self.var = ""
+            self.id = self.e1.get()
+            self.reg_no = self.e2.get()
+            self.gender = self.e3.get()
+            self.email = self.e4.get()
+            self.add = self.e5.get()
+            self.std_name = self.e6.get()
+            self.role_no = self.e7.get()
+            self.birth_date = self.e8.get()
+            self.phone_no = self.e9.get()
+            self.batch_mentor = self.e10.get()
+            self.department = self.e11.get()
+            self.year = self.e12.get()
+            self.course = self.e13.get()
+            self.subject = self.e14.get()
+            self.DIGITS = [0,1,2,3,4,5,6,7,8,9]
+            self.SYMBOLS = ['@', '#', '$', '%', '=', ':', '?', '.', '/', '|', '~', '>', '*', '(', ')', '<']
+            self.LOCASE_CHARACTERS = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'm', 'n', 'o', 'p', 'q', 'r',
+                                 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+            self.UPCASE_CHARACTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'M', 'N', 'O', 'P', 'Q', 'R',
+                                 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+            self.combine=self.LOCASE_CHARACTERS+self.UPCASE_CHARACTERS
+
+            self.l = []
+
+
+            for self.i in self.email:
+                self.l.append(self.i)
+
+            self.a = ['@', 'g', 'm', 'a', 'i', 'l', '.', 'c', 'o', 'm']
+            self.b = self.l[-10:]  # email
+
+
+
+            if self.id == self.var or self.reg_no == self.var or self.gender==self.var or self.email==self.var or self.add == self.var or self.std_name==self.var or self.role_no==self.var or self.birth_date==self.var or self.phone_no==self.var or self.batch_mentor==self.var or self.department==self.var or self.year==self.var or self.course==self.var or self.subject==self.var:
+                messagebox.askokcancel("Input","Invalid Input")
+
+            elif self.a != self.b:
+                messagebox.askokcancel('email', 'invaild email id')
+
+            elif self.DIGITS != self.id:
+                messagebox.askokcancel('ID ',"Invalid ID")
+            elif self.DIGITS !=self.reg_no:
+                messagebox.askokcancel("Reg No","Invalid REG NO")
+            elif self.phone_no != self.DIGITS:
+                messagebox.askokcancel("PHONE NO","Invalid Phone No")
+            elif self.name!= self.combine:
+                messagebox.askokcancel(" NAME"," Please Enter Valid Name ")
+            else:
+                messagebox.askokcancel("Signin","Saved Successfully")
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -41,14 +103,15 @@ class info:
 
         self.e1 = tk.Entry(self.stdfrm, width=10, font=(5), bd=2)
         self.e2 = tk.Entry(self.stdfrm, width=10, font=(5), bd=2)
-        self.e3 = ttk.Combobox(self.stdfrm, width=10, font=(5), values=['Male', 'Female'])
+        self.e3 = ttk.Combobox(self.stdfrm, width=10, font=(5), values=['Male', 'Female'],state="readonly")
         self.e4 = tk.Entry(self.stdfrm, width=10, font=(10), bd=2)
         self.e5 = tk.Entry(self.stdfrm, width=10, font=(5), bd=2)
         self.e6 = tk.Entry(self.stdfrm, width=10, font=(5), bd=2)
         self.e7 = tk.Entry(self.stdfrm, width=10, font=(5), bd=2)
-        self.e8 = DateEntry(self.stdfrm, width=10, font=(5))
+        self.e8 = DateEntry(self.stdfrm, width=10, font=(5),state="readonly")
         self.e9 = tk.Entry(self.stdfrm, width=10, font=(5), bd=2)
-        self.e10 =tk.Entry(self.stdfrm, width=10, font=(5), bd=2)
+        self.e10 =ttk.Combobox(self.stdfrm, width=10, font=(5), values=['IT-Mandar Bhave ', 'CS-Priti Kharbe'],state="readonly")
+
 
         self.l1.place(x=15, y=15)
         self.e1.place(x=88, y=15)
@@ -86,11 +149,11 @@ class info:
         self.l14 = tk.Label(self.crsfrm, text="Course :", fg="black", bg="pink",font=("Arial", 10,'bold'))
         self.l15 = tk.Label(self.crsfrm, text=" Semester :", fg="black", bg="pink",font=("Arial", 10,'bold'))
 
-        self.e11 = ttk.Combobox(self.crsfrm, width=10, font=(5), values=['IT', 'CS'])
-        self.e12 = ttk.Combobox(self.crsfrm, width=10, font=(5), values=['2022-23', '2023-24'])
+        self.e11 = ttk.Combobox(self.crsfrm, width=10, font=(5), values=['IT', 'CS'],state="readonly")
+        self.e12 = ttk.Combobox(self.crsfrm, width=10, font=(5), values=['2022-23', '2023-24'],state="readonly")
         self.e13 = tk.Entry(self.crsfrm, width=10, font=(5), bd=2)
-        self.e14 = ttk.Combobox(self.crsfrm, width=10, font=(5), values=['C', 'C++','Python','Java'])
-        self.e15 = ttk.Combobox(self.crsfrm, width=10, font=(5), values=['1', '2','3','4','5','6'])
+        self.e14 = ttk.Combobox(self.crsfrm, width=10, font=(5), values=['C', 'C++','Python','Java'],state="readonly")
+        self.e15 = ttk.Combobox(self.crsfrm, width=10, font=(5), values=['1', '2','3','4','5','6'],state="readonly")
 
         self.l11.place(x=2, y=10)
         self.e11.place(x=95, y=10)
@@ -120,7 +183,7 @@ class info:
         self.sav = self.sav.resize((150, 71))
         self.savimg = ImageTk.PhotoImage(self.sav)
 
-        self.savbtn = tk.Button(self.leftframe, bg="white", bd=0, image=self.savimg, cursor="hand2")
+        self.savbtn = tk.Button(self.leftframe, bg="white", bd=0, image=self.savimg, cursor="hand2",command=get_fun)
         self.savbtn.place(x=900, y=180, width=150, height=100)
 
         self.update = Image.open("update.png")
