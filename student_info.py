@@ -3,7 +3,16 @@ import tkinter as tk
 from tkcalendar import DateEntry
 from tkinter import ttk
 from PIL import ImageTk, Image
+import tkinter as tk
+from tkinter import messagebox
+import mysql.connector
 
+# Create a SQLite database and connect to it
+conn =mysql.connector.connect(host="localhost", username="root", password="root123",database="studentmanagement")
+c = conn.cursor()
+
+def save():
+    c.execute('')
 
 
 def std_info():
@@ -49,6 +58,7 @@ class info:
         self.e8 = DateEntry(self.stdfrm, width=10, font=(5))
         self.e9 = tk.Entry(self.stdfrm, width=10, font=(5), bd=2)
         self.e10 =tk.Entry(self.stdfrm, width=10, font=(5), bd=2)
+
 
         self.l1.place(x=15, y=15)
         self.e1.place(x=88, y=15)
@@ -144,5 +154,6 @@ class info:
         self.rsetbtn = tk.Button(self.leftframe, bg="white", bd=0, image=self.resetimg, cursor="hand2")
         self.rsetbtn.place(x=900, y=380, width=140, height=45)
         self.leftframe.mainloop()
+
 
 

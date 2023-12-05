@@ -49,3 +49,4 @@ class Detail:
         self.B2.place(x=650)
 
 
+
