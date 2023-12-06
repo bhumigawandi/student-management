@@ -70,13 +70,13 @@ class info:
             elif self.a != self.b:
                 messagebox.askokcancel('email', 'invaild email id')
 
-            elif self.id.isalnum():
+            elif not self.id.isdigit():
                 messagebox.askokcancel('ID ',"Invalid ID")
-            elif self.reg_no.isalnum():
+            elif not self.reg_no.isdigit():
                 messagebox.askokcancel("Reg No","Invalid REG NO")
-            elif self.phone_no != self.DIGITS:
+            elif not self.phone_no.isdigit() :
                 messagebox.askokcancel("PHONE NO","Invalid Phone No")
-            elif self.name!= self.combine:
+            elif not self.std_name.isalpha():
                 messagebox.askokcancel(" NAME"," Please Enter Valid Name ")
             else:
                 messagebox.askokcancel("Signin","Saved Successfully")
