@@ -5,6 +5,7 @@ from email.mime.text import MIMEText
 from tkinter import Tk, Label, Entry, Button
 
 #ffnfnf
+
 def email(root_parent1):
     root = tk.Tk
     main_Obj = root_parent1
@@ -17,6 +18,9 @@ class OTPSender:
     def __init__(self, root, main_Obj):
         self.otp_code = None
         self.root = root
+
+
+
 
         self.root = Tk()
         self.parent = main_Obj
